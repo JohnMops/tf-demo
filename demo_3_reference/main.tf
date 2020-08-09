@@ -22,5 +22,8 @@ resource "aws_subnet" "lord_of_the_rings" {
   }
 }
 
+### The order of the resources does not matter, you can put the subnets before the vpc
+### Terraform knows what needs to get created first and chain all the resources together (not always the case)
+
 
 
