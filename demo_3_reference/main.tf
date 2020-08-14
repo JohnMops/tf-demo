@@ -15,7 +15,7 @@ resource "aws_vpc" "narnia" {
 
 resource "aws_subnet" "lord_of_the_rings" {
   cidr_block = "10.0.1.0/24"
-  vpc_id =  # Reference to our narnia vpc
+  vpc_id =  aws_vpc.narnia.id# Reference to our narnia vpc
 
   tags = {
     Name = "Legendary Movie"
