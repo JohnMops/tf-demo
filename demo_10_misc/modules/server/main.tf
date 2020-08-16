@@ -1,20 +1,20 @@
 
 resource "aws_instance" "awesome_instance" {
-  count = 2
-  ami = data.aws_ami.ubuntu.id # even though it is in a different file, terraform does not care
-  instance_type = var.instance_type
+  count             = var.create_server ? 2 : 1
+  ami               = data.aws_ami.ubuntu.id # even though it is in a different file, terraform does not care
+  instance_type     = var.instance_type
   availability_zone = var.az
-  key_name = var.key_name
+  key_name          = var.key_name
 
   network_interface {
-    device_index = 0 # nic number
+    device_index         = 0 # nic number
     network_interface_id = var.network_interface[count.index]
   }
 
   tags = {
-    Name = "${var.prefix}_web_server_${count.index}",
+    Name        = "${var.prefix}_web_server_${count.index}",
     environment = var.prefix,
-    created_by = var.creator
+    created_by  = var.creator
   }
 
 
@@ -25,6 +25,6 @@ resource "aws_instance" "awesome_instance" {
               sudo systemctl start apache2
               sudo bash -c 'echo your first web server > var/www/html/index.html'
               EOF
-  }
+}
 
 

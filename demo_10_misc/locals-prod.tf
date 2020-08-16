@@ -12,6 +12,7 @@ locals {
     }
     server = {
 
+      create_server = false
       az = "us-east-1b"
       instance_type = "t3.large"
       key_name = "mops"

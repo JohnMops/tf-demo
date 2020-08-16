@@ -13,3 +13,6 @@ variable "creator" {
     error_message = "Must contain only letters."
   }
 }
+variable "create_server" {
+
+}

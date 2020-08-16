@@ -12,6 +12,7 @@ locals {
     }
     server = {
 
+      create_server = false
       az = "us-east-1a"
       instance_type = "t3.micro"
       key_name = "mops"
